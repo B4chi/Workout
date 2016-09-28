@@ -1,5 +1,6 @@
 package de.b4chi.workout;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
     }
 
     @Override
@@ -22,7 +24,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.NewExercice){
-            // TODO: 28.09.2016  
+            Intent intent = new Intent(getApplicationContext(), NewExersiceActivity.class);
+            startActivity(intent);
         }
         return true;
     }
