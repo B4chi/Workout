@@ -1,11 +1,18 @@
 package de.b4chi.workout;
 
+import android.graphics.drawable.GradientDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Display;
+import android.view.Gravity;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class NewExersiceActivity extends AppCompatActivity {
     RelativeLayout relativeLayoutRoot;
@@ -36,14 +43,30 @@ public class NewExersiceActivity extends AppCompatActivity {
             top += 100;
         }
 
-        NumberPicker numberPicker = new NumberPicker(getApplicationContext());
-        numberPicker.setY(800);
-        String[] nums = {"1","1.5","2","2.5","3","3.5","4","4.5","5","5.5","6","6.5","7","7.5","8","8.5","9"};
-        numberPicker.setDisplayedValues(nums);
-        relativeLayoutRoot.addView(numberPicker);
-        System.out.println("Test");
+        int size = 400;
+        String[] nums = new String[size];
+        double d = 5;
+        for (int i = 0; i < size; i++) {
+            nums[i]= String.valueOf(d);
+            d+= 0.5;
+        }
+
+        NumberPicker np = new NumberPicker(getApplicationContext());
+        np.setY(800);
+
+        np.setMaxValue(nums.length-1);
+        np.setMinValue(0);
+        np.setWrapSelectorWheel(false);
+        np.setDisplayedValues(nums);
+        np.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+        relativeLayoutRoot.addView(np);
+
+
+
 
 
 
     }
+
+
 }
